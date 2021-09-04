@@ -1,0 +1,5 @@
+route HelloWorld(nothing) : int
+{
+	def myNum : int;
+	ret 0;
+}

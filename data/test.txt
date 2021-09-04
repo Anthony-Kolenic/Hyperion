@@ -1,0 +1,4 @@
+route HelloWorld(nothing) : int
+{
+	return 0;
+}
