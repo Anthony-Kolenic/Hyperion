@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 from lexer.token_type import TokenType
 from lexer.token import Token
 from typing import List
-
+from tree_parser.node import Node
 class BaseCmd(ABC):
     
     @abstractmethod
@@ -14,4 +14,4 @@ class BaseCmd(ABC):
         if (token.token_type != expected_token):
             raise ValueError(f"Expected token of type {expected_token} but found {token.token_type} with lexeme \"{token.lexeme}\"")
         print(f"Eating - {token}")
-        return token
+        return Node(token)
