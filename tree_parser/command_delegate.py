@@ -6,4 +6,5 @@ class CommandDelegate():
     def execute(command: BaseCmd) -> BaseCmd:
         print(f"Executing - {command.__class__.__name__}")
         command.execute()
+        print(f"Completed - {command.__class__.__name__}")
         return command

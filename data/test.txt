@@ -1,4 +1,4 @@
-route HelloWorld(nothing) : int
+route HelloWorld(i: bool) : int
 {
 	return 0;
 }

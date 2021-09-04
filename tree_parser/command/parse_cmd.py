@@ -10,5 +10,5 @@ class ParseCmd(BaseCmd):
         self.tokens = tokens
     
     def execute(self):
-        CommandDelegate.execute(RouteCmd(self.tokens))
+        self.root = CommandDelegate.execute(RouteCmd(self.tokens)).root
 

@@ -1,24 +1,26 @@
-from lexer.token import Token
+from tree_parser.node_type import NodeType
 from lexer.token import TokenType
-from .base_cmd import BaseCmd
-from typing import Deque, List
+from tree_parser.command.base_parser_cmd import BaseParserCmd
+from tree_parser.command.parameter_list_cmd import ParameterListCmd
+from tree_parser.command.statement_list_cmd import StatementListCmd
+from tree_parser.command_delegate import CommandDelegate
 from tree_parser.node import Node
 
-class RouteCmd(BaseCmd):
+class RouteCmd(BaseParserCmd):
 
-    def __init__(self, tokens: List[Token]):
-        self.tokens = tokens
-        self.root = Node(Token(TokenType.ROUTE, "")) # TODO: Add tree node types
+    def get_type(self):
+        return NodeType.METHOD
 
     def execute(self):
-        self.root.add_child(self.eat_token(self.tokens, TokenType.ROUTE))
-        self.root.add_child(self.eat_token(self.tokens, TokenType.IDENTIFIER))
-        self.root.add_child(self.eat_token(self.tokens, TokenType.LPAREN))
-        self.root.add_child(self.eat_token(self.tokens, TokenType.VOID))
-        self.root.add_child(self.eat_token(self.tokens, TokenType.RPAREN))
-        self.root.add_child(self.eat_token(self.tokens, TokenType.COLON))
-        self.root.add_child(self.eat_token(self.tokens, TokenType.INT))
-        self.root.add_child(self.eat_token(self.tokens, TokenType.BEGIN))
-        print(self.root)
+        self.eat_token(TokenType.ROUTE)
+        self.root.add_child(Node(NodeType.IDENTIFIER, self.eat_token(TokenType.IDENTIFIER)))
+        self.eat_token(TokenType.LPAREN)
+        self.root.add_child(CommandDelegate.execute(ParameterListCmd(self.tokens)).root)
+        self.eat_token(TokenType.RPAREN)
+        self.eat_token( TokenType.COLON)
+        self.root.add_child(Node(NodeType.RETURN_TYPE, self.eat_token(TokenType.INT)))
+        self.eat_token(TokenType.BEGIN)
+        self.root.add_child(CommandDelegate.execute(StatementListCmd(self.tokens)).root)
+        self.eat_token(TokenType.END)
         # route = self.eat_token(self.tokens, TokenType.INT)
         # route = self.eat_token(self.tokens, TokenType.END)

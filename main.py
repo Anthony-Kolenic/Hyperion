@@ -21,6 +21,7 @@ def main():
 
     print("\n====\t Parsing \t====\n")
     parserCmd = CommandDelegate.execute(ParseCmd(tokens))
+    print(parserCmd.root)
 
 def tokenize(characters: Deque) -> List[Token]:
     graphs = get_expression_list()
