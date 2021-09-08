@@ -1,4 +1,4 @@
-route HelloWorld(i: bool) : int
+route HelloWorld(bob: bool, tina : char) : int
 {
 	return 0;
 }

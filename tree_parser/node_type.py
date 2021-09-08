@@ -7,3 +7,5 @@ class NodeType(Enum):
     RETURN_TYPE = auto()
     TYPE = auto()
     STATEMENT_LIST = auto()
+    STATEMENT = auto()
+    EXPRESSION = auto()

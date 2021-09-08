@@ -22,5 +22,3 @@ class RouteCmd(BaseParserCmd):
         self.eat_token(TokenType.BEGIN)
         self.root.add_child(CommandDelegate.execute(StatementListCmd(self.tokens)).root)
         self.eat_token(TokenType.END)
-        # route = self.eat_token(self.tokens, TokenType.INT)
-        # route = self.eat_token(self.tokens, TokenType.END)
