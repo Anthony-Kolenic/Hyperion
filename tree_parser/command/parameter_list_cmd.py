@@ -1,4 +1,4 @@
-from lexer.token import TokenType
+from lexer.token import TokenType, get_variable_types
 from tree_parser.command.base_parser_cmd import BaseParserCmd
 from tree_parser.node import Node
 from tree_parser.node_type import NodeType
@@ -15,7 +15,7 @@ class ParameterListCmd(BaseParserCmd):
             else:
                 self.root.add_child(Node(NodeType.IDENTIFIER, self.eat_token( TokenType.IDENTIFIER )))
                 self.eat_token(TokenType.COLON)
-                self.root.add_child(Node(NodeType.TYPE, self.eat_token(TokenType.INT, TokenType.BOOL, TokenType.CHAR, TokenType.STRING, TokenType.DBL))) # TODO: Allow any type
+                self.root.add_child(Node(NodeType.TYPE, self.eat_token(*get_variable_types()))) 
                 if (self.is_next_token(TokenType.COMMA)):
                     self.eat_token(TokenType.COMMA)
 

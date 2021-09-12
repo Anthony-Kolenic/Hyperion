@@ -2,6 +2,7 @@ from tree_parser.command_delegate import CommandDelegate
 from lexer.token import TokenType
 from tree_parser.command.base_parser_cmd import BaseParserCmd
 from tree_parser.command.return_cmd import ReturnCmd
+from tree_parser.command.definition_cmd import DefinitionCmd
 from tree_parser.node import Node
 from tree_parser.node_type import NodeType
 
@@ -23,4 +24,5 @@ class StatementListCmd(BaseParserCmd):
     def get_statement_types():
         statements = dict()
         statements[TokenType.RETURN] = ReturnCmd
+        statements[TokenType.DEF] = DefinitionCmd
         return statements

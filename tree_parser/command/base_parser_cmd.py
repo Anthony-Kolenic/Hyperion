@@ -27,5 +27,14 @@ class BaseParserCmd(BaseCmd):
         print(f"Eating - {token}")
         return token
 
-    def is_next_token(self, token_type: TokenType) -> bool:
-        return len(self.tokens) > 0 and self.tokens[0].token_type == token_type
+    
+    def is_next_token(self, *token_types: TokenType) -> bool:
+        # Check that there are enough tokens to validate against
+        if (len(token_types) > len(self.tokens)):
+            return False
+        valid = True
+        for index, token_type in enumerate(token_types):
+            if (token_type != self.tokens[index].token_type):
+                valid = False
+                break
+        return valid

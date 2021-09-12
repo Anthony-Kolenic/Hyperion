@@ -106,7 +106,6 @@ def get_expression_list():
     result.append(create_keyword(TokenType.MULTIPLY, "*"))
     result.append(create_keyword(TokenType.NONE, "none"))
     result.append(create_keyword(TokenType.NOT, "!"))
-    result.append(create_keyword(TokenType.NOT, "!"))
     result.append(create_keyword(TokenType.OR, "or"))
     result.append(create_keyword(TokenType.RETURN, "return"))
     result.append(create_keyword(TokenType.ROUTE, "route"))

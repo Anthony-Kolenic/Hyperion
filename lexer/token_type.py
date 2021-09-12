@@ -1,4 +1,5 @@
 from enum import Enum, auto
+from typing import List
 
 class TokenType(Enum):
     NONE = auto()
@@ -55,3 +56,6 @@ class TokenType(Enum):
     STRING = auto()
     WHILE = auto()
     IDENTIFIER = auto() # ID must always be the last token as it has the least precedence
+
+def get_variable_types() -> List[TokenType]:
+    return [TokenType.INT, TokenType.BOOL, TokenType.CHAR, TokenType.STRING, TokenType.DBL]

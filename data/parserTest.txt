@@ -1,5 +1,4 @@
-route HelloWorld(nothing) : int
-{
-	def myNum : int;
-	ret 0;
+route helloWorld(nothing) : int {
+	def my_num : int;
+	return 0;
 }
