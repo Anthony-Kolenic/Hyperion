@@ -37,14 +37,14 @@ class ExpressionCmd(BaseParserCmd):
 
     def execute(self):
         if (TermCmd.is_term(self.tokens)):
-            self.root.add_child(Node(NodeType.TERM, CommandDelegate.execute(TermCmd(self.tokens)).root))
+            self.root.add_child(CommandDelegate.execute(TermCmd(self.tokens)).root)
         elif UnaryOperationCmd.is_unary_operation(self.tokens):
-            self.root.add_child(Node(NodeType.UNARY_OPERATION, CommandDelegate.execute(UnaryOperationCmd(self.tokens)).root))
+            self.root.add_child(CommandDelegate.execute(UnaryOperationCmd(self.tokens)).root)
         elif self.is_next_token(TokenType.IDENTIFIER, TokenType.LPAREN):
-            self.root.add_child(Node(NodeType.METHOD_CALL, CommandDelegate.execute(MethodCallCmd(self.tokens)).root))
+            self.root.add_child( CommandDelegate.execute(MethodCallCmd(self.tokens)).root)
         elif self.is_next_token(TokenType.LPAREN):
             self.eat_token(TokenType.LPAREN)
-            self.root.add_child(Node(NodeType.EXPRESSION, CommandDelegate.execute(ExpressionCmd(self.tokens)).root))
+            self.root.add_child(CommandDelegate.execute(ExpressionCmd(self.tokens)).root)
             self.eat_token(TokenType.RPAREN)
         else:
             raise ValueError(f"Expected expression but found {self.tokens[0].token_type} with lexeme \"{self.tokens[0].lexeme}\"")

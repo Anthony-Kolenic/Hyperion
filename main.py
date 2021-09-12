@@ -4,6 +4,7 @@ from lexer.token import Token
 from lexer.expressions  import *
 from command.command_delegate import CommandDelegate
 from tree_parser.command.parse_cmd import ParseCmd
+from tree_walker.tree_output_cmd import TreeOutputCmd
 
 def main():
     print("====\t Reading File \t====")
@@ -20,8 +21,11 @@ def main():
         print(f"({token.token_type}: {token.lexeme})")
 
     print("\n====\t Parsing \t====\n")
-    parserCmd = CommandDelegate.execute(ParseCmd(tokens))
-    print(parserCmd.root)
+    parser_cmd = CommandDelegate.execute(ParseCmd(tokens))
+    print(parser_cmd.root)
+    ast = CommandDelegate.execute(TreeOutputCmd(parser_cmd.root))
+    print(ast.result())
+
 
 def tokenize(characters: Deque) -> List[Token]:
     graphs = get_expression_list()

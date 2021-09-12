@@ -12,5 +12,5 @@ class ReturnCmd(BaseParserCmd):
 
     def execute(self):
         self.eat_token(TokenType.RETURN)
-        self.root.add_child(Node(NodeType.EXPRESSION, CommandDelegate.execute(ExpressionCmd(self.tokens)).root))
+        self.root.add_child(CommandDelegate.execute(ExpressionCmd(self.tokens)).root)
         self.eat_token(TokenType.SEMICOLON)
