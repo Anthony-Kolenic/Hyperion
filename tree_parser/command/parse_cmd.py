@@ -1,6 +1,6 @@
-from .base_cmd import BaseCmd
+from command.base_cmd import BaseCmd
 from .route_cmd import RouteCmd
-from ..command_delegate import CommandDelegate
+from command.command_delegate import CommandDelegate
 from lexer.token import Token
 from typing import List
 

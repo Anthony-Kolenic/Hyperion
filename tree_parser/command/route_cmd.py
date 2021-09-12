@@ -3,7 +3,7 @@ from lexer.token import TokenType
 from tree_parser.command.base_parser_cmd import BaseParserCmd
 from tree_parser.command.parameter_list_cmd import ParameterListCmd
 from tree_parser.command.statement_list_cmd import StatementListCmd
-from tree_parser.command_delegate import CommandDelegate
+from command.command_delegate import CommandDelegate
 from tree_parser.node import Node
 
 class RouteCmd(BaseParserCmd):

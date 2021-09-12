@@ -4,7 +4,7 @@ from lexer.token import TokenType
 from tree_parser.command.base_parser_cmd import BaseParserCmd
 from tree_parser.command.term_cmd import TermCmd
 from tree_parser.command.unary_operation_cmd import UnaryOperationCmd
-from tree_parser.command_delegate import CommandDelegate
+from command.command_delegate import CommandDelegate
 from tree_parser.node import Node
 
 """ Expression Command, deals with an expression. 

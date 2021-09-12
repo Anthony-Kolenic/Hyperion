@@ -1,7 +1,7 @@
 from tree_parser.node_type import NodeType
 from lexer.token import TokenType, get_variable_types
 from tree_parser.command.base_parser_cmd import BaseParserCmd
-from tree_parser.command_delegate import CommandDelegate
+from command.command_delegate import CommandDelegate
 from tree_parser.node import Node
 
 class DefinitionCmd(BaseParserCmd):

@@ -2,7 +2,7 @@ from typing import Deque, List
 from lexer.token_type import TokenType
 from lexer.token import Token
 from lexer.expressions  import *
-from tree_parser.command_delegate import CommandDelegate
+from command.command_delegate import CommandDelegate
 from tree_parser.command.parse_cmd import ParseCmd
 
 def main():

@@ -1,4 +1,4 @@
-from tree_parser.command_delegate import CommandDelegate
+from command.command_delegate import CommandDelegate
 from lexer.token import TokenType
 from tree_parser.command.base_parser_cmd import BaseParserCmd
 from tree_parser.command.return_cmd import ReturnCmd

@@ -1,4 +1,4 @@
-from .command.base_cmd import BaseCmd
+from command.base_cmd import BaseCmd
 
 class CommandDelegate():
 
