@@ -26,5 +26,5 @@ class TermCmd(BaseParserCmd):
 
     @staticmethod
     def is_term(tokens):
-        return len(tokens) > 1 and tokens[1].token_type == TokenType.SEMICOLON and tokens[0].token_type in TermCmd.valid_types
+        return len(tokens) > 0 and tokens[0].token_type in TermCmd.valid_types
         

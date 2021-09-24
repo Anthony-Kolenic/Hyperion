@@ -1,4 +1,4 @@
 route HelloWorld(bob: bool, tina : char) : int
 {
-	return 0;
+	return -a + b;
 }

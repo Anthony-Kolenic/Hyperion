@@ -15,6 +15,13 @@ class BaseParserCmd(BaseCmd):
         self.tokens = tokens
         self.children = []
         self.root = Node(self.get_type())
+        self.initialize()
+
+    def initialize(self):
+        pass
+
+    def eat_any_token(self):
+        return self.tokens.pop(0)
 
     def eat_token(self, *expected_tokens: TokenType) -> Token:
         token = self.tokens.pop(0)

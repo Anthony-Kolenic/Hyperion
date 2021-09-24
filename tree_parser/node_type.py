@@ -14,5 +14,5 @@ class NodeType(Enum):
     NOT = auto()
     METHOD_CALL = auto()
     UNARY_OPERATION = auto()
-    BNINARY_OPERATION = auto()
+    BINARY_OPERATION = auto()
     OPERATION = auto()

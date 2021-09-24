@@ -1,5 +1,5 @@
 from command.base_cmd import BaseCmd
-from tree_parser.node import Node
+from tree_parser import Node
 import graphviz
 
 class TreeOutputCmd(BaseCmd):
