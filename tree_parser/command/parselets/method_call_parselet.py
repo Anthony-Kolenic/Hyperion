@@ -9,8 +9,12 @@ from tree_parser import Node, NodeType
 class MethodCallParselet(PrefixParselet):
 
     def parse(self, left: Node, token: Token, command: BaseParserCmd):
-        node = Node(NodeType.METHOD_CALL, token)
-        node.add_child(CommandDelegate.execute(tp.ExpressionCmd(command.tokens)).root)
+        node = Node(NodeType.METHOD_CALL)
+        node.add_child(left)
+        while (not command.is_next_token(TokenType.RPAREN)):
+            node.add_child(Node.wrap(CommandDelegate.execute(tp.ExpressionCmd(command.tokens)).root, NodeType.EXPRESSION))
+            if (command.is_next_token(TokenType.COMMA)):
+                command.eat_token(TokenType.COMMA)
         command.eat_token(TokenType.RPAREN)
         return node
     
