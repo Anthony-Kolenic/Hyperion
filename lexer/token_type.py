@@ -14,6 +14,7 @@ class TokenType(Enum):
     EXPR_DEF = auto()
     IF = auto()
     ELSE = auto()
+    ELSE_IF = auto()
     BEGIN = auto()
     DO = auto()
     END = auto()

@@ -1,4 +1,9 @@
-route HelloWorld(bob: bool, tina : char) : int
-{
+route HelloWorld(bob: bool, tina : char) : int {
+	def c: int = 3 + 6;
+	if (g) {
+		def a: string = 2;
+	} elif (b) {
+		def zx: string = 2;
+	}
 	return -a + b;
 }

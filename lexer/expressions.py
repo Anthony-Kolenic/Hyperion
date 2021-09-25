@@ -97,6 +97,7 @@ def get_expression_list():
     result.append(create_keyword(TokenType.GT, ">"))
     result.append(create_keyword(TokenType.GTE, ">="))
     result.append(create_keyword(TokenType.IF, "if"))
+    result.append(create_keyword(TokenType.ELSE_IF, "elif"))
     result.append(create_keyword(TokenType.INEQUALITY, "!="))
     result.append(create_keyword(TokenType.INT, "int"))
     result.append(create_int_literal())
