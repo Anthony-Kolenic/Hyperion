@@ -4,6 +4,12 @@ route HelloWorld(bob: bool, tina : char) : int {
 		def a: string = 2;
 	} elif (b) {
 		def zx: string = 2;
+	} else {
+		return k + g;
+	}
+
+	while (a + c) {
+		def zy: string = 2;
 	}
 	return -a + b;
 }

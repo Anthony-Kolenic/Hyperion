@@ -1,3 +1,4 @@
+from tree_parser.command.while_cmd import WhileCmd
 from tree_parser.command.expression_cmd import ExpressionCmd
 from command.command_delegate import CommandDelegate
 from lexer.token import TokenType
@@ -6,6 +7,7 @@ from tree_parser.command.return_cmd import ReturnCmd
 from tree_parser.command.definition_cmd import DefinitionCmd
 from tree_parser.command.assign_cmd import AssignCmd
 from tree_parser.command.if_cmd import IfCmd
+from tree_parser.command.while_cmd import WhileCmd
 from tree_parser.node_type import NodeType
 
 class StatementListCmd(BaseParserCmd):
@@ -35,4 +37,5 @@ class StatementListCmd(BaseParserCmd):
         statements[TokenType.RETURN] = ReturnCmd
         statements[TokenType.DEF] = DefinitionCmd
         statements[TokenType.IF] = IfCmd
+        statements[TokenType.WHILE] = WhileCmd
         return statements

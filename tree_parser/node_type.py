@@ -14,6 +14,7 @@ class NodeType(Enum):
     CONDITIONAL = auto()
     ELSE = auto()
     TERM = auto()
+    WHILE_LOOP = auto()
     METHOD_CALL = auto()
     UNARY_OPERATION = auto()
     BINARY_OPERATION = auto()
