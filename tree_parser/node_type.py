@@ -1,8 +1,10 @@
 from enum import Enum, auto
 
 class NodeType(Enum):
+    ROOT = auto()
     METHOD = auto()
-    PARAMATER_LIST = auto()
+    PARAMETER_LIST = auto()
+    PARAMETER = auto()
     IDENTIFIER = auto()
     RETURN = auto()
     RETURN_TYPE = auto()

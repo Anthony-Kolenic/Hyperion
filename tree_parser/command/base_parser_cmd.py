@@ -9,7 +9,8 @@ from tree_parser.node_type import NodeType
 class BaseParserCmd(BaseCmd):
 
     @abstractmethod
-    def get_type(self): NodeType
+    def get_type(self) -> NodeType:
+        pass
 
     def __init__(self, tokens: List[Token]):
         self.tokens = tokens

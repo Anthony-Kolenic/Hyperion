@@ -1,5 +1,5 @@
 from tree_parser.node_type import NodeType
-from lexer.token import TokenType
+from lexer.token import Token, TokenType
 from tree_parser.command.base_parser_cmd import BaseParserCmd
 from tree_parser.command.parameter_list_cmd import ParameterListCmd
 from tree_parser.command.statement_list_cmd import StatementListCmd
@@ -18,7 +18,7 @@ class RouteCmd(BaseParserCmd):
         self.root.add_child(CommandDelegate.execute(ParameterListCmd(self.tokens)).root)
         self.eat_token(TokenType.RPAREN)
         self.eat_token( TokenType.COLON)
-        self.root.add_child(Node(NodeType.RETURN_TYPE, self.eat_token(TokenType.INT)))
+        self.root.add_child(Node(NodeType.RETURN_TYPE, self.eat_token(TokenType.INT, TokenType.DBL, TokenType.STRING, TokenType.CHAR, TokenType.BOOL, TokenType.VOID)))
         self.eat_token(TokenType.BEGIN)
         self.root.add_child(CommandDelegate.execute(StatementListCmd(self.tokens)).root)
         self.eat_token(TokenType.END)

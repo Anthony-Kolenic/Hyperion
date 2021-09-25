@@ -1,4 +1,4 @@
-route hellow_world(bob: bool, tina : char) : int {
+route hello_world(bob: bool, tina : char) : string {
 	def amount: int = 1000;
 	def current_value: int = 2;
 	while (current_value <= amount) {
@@ -8,4 +8,11 @@ route hellow_world(bob: bool, tina : char) : int {
 			print(current_value + " is odd");
 		}
 	}
+	say_hello("Test", 30);
+	return "Done!";
+}
+
+route say_hello(name : string, age: int) : nothing {
+	def born_in: int = 2021 - age;
+	print("Hi ", name, ", you were born in: ", born_in);
 }
