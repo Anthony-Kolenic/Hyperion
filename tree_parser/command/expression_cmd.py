@@ -4,7 +4,7 @@ from tree_parser.node_type import NodeType
 from lexer.token import Token, TokenType
 from tree_parser.command.base_parser_cmd import BaseParserCmd
 from tree_parser.node import Node
-from .parselets import IdentifierParselet, PrefixOperatorParselet, GroupParselet, InfixOperatorParselet, Precedence, LiteralParselet
+from .parselets import IdentifierParselet, PrefixOperatorParselet, GroupParselet, InfixOperatorParselet, Precedence, LiteralParselet, MethodCallParselet
 
 """ Expression Command, deals with an expression. 
 Expression's consist out of the following and ended semi colon: 
@@ -54,6 +54,7 @@ class ExpressionCmd(BaseParserCmd):
         self.register_infix(TokenType.MULTIPLY, InfixOperatorParselet, Precedence.PRODUCT)
         self.register_infix(TokenType.DIVIDE, InfixOperatorParselet, Precedence.PRODUCT)
         self.register_infix(TokenType.MOD, InfixOperatorParselet, Precedence.PRODUCT)
+        self.register_infix(TokenType.LPAREN, MethodCallParselet, Precedence.CALL)
 
         self.register_infix(TokenType.AND, InfixOperatorParselet, Precedence.CONDITIONAL)
         self.register_infix(TokenType.XOR, InfixOperatorParselet, Precedence.CONDITIONAL)

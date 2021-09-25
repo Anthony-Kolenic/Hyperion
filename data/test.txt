@@ -1,15 +1,11 @@
-route HelloWorld(bob: bool, tina : char) : int {
-	def c: int = 3 + 6;
-	if (3 < 4) {
-		def a: string = 2;
-	} elif (g >= 1) {
-		def zx: string = 2;
-	} else {
-		return "4" + 3.0;
+route hellow_world(bob: bool, tina : char) : int {
+	def amount: int = 1000;
+	def current_value: int = 2;
+	while (current_value <= amount) {
+		if (current_value % 2 == 0) {
+			print(current_value + " is even");
+		} else {
+			print(current_value + " is odd");
+		}
 	}
-
-	while (a + 1 < c) {
-		def zy: string = 2;
-	}
-	return -a + b;
 }

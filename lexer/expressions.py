@@ -32,16 +32,35 @@ def create_dbl_literal() -> ExpressionGraph:
             v.connections[a] = b
     return result
 
-def create_delimited_literal(delim) -> ExpressionGraph:
+def create_char_literal() -> ExpressionGraph:
     result = ExpressionGraph(TokenType.CHAR_LITERAL)
     root = result.root
-    root.connections[delim] = Node(False)
+    delimiter = "'"
+    root.connections[delimiter] = Node(False)
     for i in range(32,128):
-        if i is not ord(delim):
-            root.connections[delim].connections[chr(i)] = Node(False)
+        if i is not ord("'"):
+            root.connections[delimiter].connections[chr(i)] = Node(False)
     finalNode = Node(True)
-    for node in root.connections[delim].connections.values():
-        node.connections[delim] = finalNode
+    for node in root.connections[delimiter].connections.values():
+        node.connections[delimiter] = finalNode
+    return result
+
+def create_string_literal() -> ExpressionGraph:
+    result = ExpressionGraph(TokenType.STR_LITERAL)
+    root = result.root
+    delimiter = '"'
+    root.connections[delimiter] = Node(False)
+    for i in range(32,128):
+        if i is not ord(delimiter):
+            root.connections[delimiter].connections[chr(i)] = Node(False)
+    
+    for k,v in root.connections[delimiter].connections.items(): # for each connection
+        for a,b in root.connections[delimiter].connections.items(): # connect every other connection
+            v.connections[a] = b
+    
+    finalNode = Node(True)
+    for node in root.connections[delimiter].connections.values():
+        node.connections[delimiter] = finalNode
     return result
 
 def create_bool_lit() -> ExpressionGraph:
@@ -77,13 +96,15 @@ def create_keyword(token_type: TokenType, keyword: str):
 def get_expression_list():
     result = []
     result.append(create_keyword(TokenType.ADD, '+'))
+    result.append(create_keyword(TokenType.EQUALITY, "=="))
+
     result.append(create_keyword(TokenType.AND, "and"))
     result.append(create_keyword(TokenType.ASSIGN, "="))
     result.append(create_keyword(TokenType.BEGIN, "{"))
     result.append(create_keyword(TokenType.BOOL, "bool"))
     result.append(create_bool_lit())
     result.append(create_keyword(TokenType.CHAR, "char"))
-    result.append(create_delimited_literal("'"))
+    result.append(create_char_literal())
     result.append(create_keyword(TokenType.COLON, ":"))
     result.append(create_keyword(TokenType.COMMA, ","))
     result.append(create_keyword(TokenType.DBL, "double"))
@@ -93,7 +114,6 @@ def get_expression_list():
     result.append(create_keyword(TokenType.DO, "do"))
     result.append(create_keyword(TokenType.ELSE, "else"))
     result.append(create_keyword(TokenType.END, "}"))
-    result.append(create_keyword(TokenType.EQUALITY, "=="))
     result.append(create_keyword(TokenType.GT, ">"))
     result.append(create_keyword(TokenType.GTE, ">="))
     result.append(create_keyword(TokenType.IF, "if"))
@@ -116,7 +136,7 @@ def get_expression_list():
     result.append(create_keyword(TokenType.ST, "<"))
     result.append(create_keyword(TokenType.STE, "<="))
     result.append(create_keyword(TokenType.STRING, "string"))
-    result.append(create_delimited_literal('"')) 
+    result.append(create_string_literal()) 
     result.append(create_keyword(TokenType.SUBTRACT, "-"))
     result.append(create_keyword(TokenType.VOID, "nothing"))
     result.append(create_keyword(TokenType.WHILE, "while"))

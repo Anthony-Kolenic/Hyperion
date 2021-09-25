@@ -24,8 +24,10 @@ class StatementListCmd(BaseParserCmd):
             elif (token.token_type == TokenType.IDENTIFIER):
                 if (self.tokens[1].token_type == TokenType.ASSIGN):
                     self.root.add_child(CommandDelegate.execute(AssignCmd(self.tokens)).root)
+                    self.eat_token(TokenType.SEMICOLON)
                 elif (self.tokens[1].token_type == TokenType.LPAREN):
                     self.root.add_child(CommandDelegate.execute(ExpressionCmd(self.tokens)).root)
+                    self.eat_token(TokenType.SEMICOLON)
                 else:
                     raise ValueError(f"Expected statement but found {token.token_type} with lexeme \"{token.lexeme}\"")
             else:

@@ -23,6 +23,12 @@ class Node():
                 break
         return child
 
+    @staticmethod
+    def wrap(node, wrapper_type: NodeType, token: Token = None):
+        new_node = Node(wrapper_type, token)
+        new_node.children.append(node)
+        return new_node
+
     def __repr__(self) -> str:
         kvps = [f"{k}={v}" for k, v in vars(self).items()]
         return f"{type(self).__name__}({', '.join(kvps)})"

@@ -22,7 +22,6 @@ def main():
 
     print("\n====\t Parsing \t====\n")
     parser_cmd = CommandDelegate.execute(ParseCmd(tokens))
-    print(parser_cmd.root)
     ast = CommandDelegate.execute(TreeOutputCmd(parser_cmd.root))
     print(ast.result())
 
@@ -61,7 +60,7 @@ def tokenize(characters: Deque) -> List[Token]:
             if (best_graph != None):
                 tokens.append(Token(best_graph.token_type, lexeme))
             else:
-                raise ValueError(f"Unknown character sequence {lexeme}")
+                raise ValueError(f"Unknown character sequence {lexeme} {characters}")
     return tokens
 
 def remove_whitespace(characters: Deque) -> Deque:

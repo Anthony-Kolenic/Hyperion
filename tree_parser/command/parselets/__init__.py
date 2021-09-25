@@ -6,3 +6,4 @@ from .precedence import Precedence
 from .infix_operator_parselet import InfixOperatorParselet
 from .infix_parselet import InfixParselet
 from .literal_parselet import LiteralParselet
+from .method_call_parselet import MethodCallParselet

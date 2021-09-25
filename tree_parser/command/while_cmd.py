@@ -1,4 +1,5 @@
 from tree_parser.node_type import NodeType
+from tree_parser.node import Node
 from lexer.token import TokenType
 from tree_parser.command.base_parser_cmd import BaseParserCmd
 import tree_parser as tp
@@ -12,7 +13,7 @@ class WhileCmd(BaseParserCmd):
     def execute(self):
         self.eat_token(TokenType.WHILE)
         self.eat_token(TokenType.LPAREN)
-        self.root.add_child(CommandDelegate.execute(tp.ExpressionCmd(self.tokens)).root)
+        self.root.add_child(Node.wrap(CommandDelegate.execute(tp.ExpressionCmd(self.tokens)).root, NodeType.EXPRESSION))
         self.eat_token(TokenType.RPAREN)
         self.eat_token(TokenType.BEGIN)
         self.root.add_child(CommandDelegate.execute(tp.StatementListCmd(self.tokens)).root)

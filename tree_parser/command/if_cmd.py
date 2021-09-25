@@ -13,7 +13,7 @@ class IfCmd(BaseParserCmd):
     def execute(self):
         self.eat_token(TokenType.IF)
         self.eat_token(TokenType.LPAREN)
-        self.root.add_child(CommandDelegate.execute(tp.ExpressionCmd(self.tokens)).root)
+        self.root.add_child(Node.wrap(CommandDelegate.execute(tp.ExpressionCmd(self.tokens)).root, NodeType.EXPRESSION))
         self.eat_token(TokenType.RPAREN)
         self.eat_token(TokenType.BEGIN)
         self.root.add_child(CommandDelegate.execute(tp.StatementListCmd(self.tokens)).root)
@@ -23,7 +23,7 @@ class IfCmd(BaseParserCmd):
             node = Node(NodeType.CONDITIONAL)
             self.eat_token(TokenType.ELSE_IF)
             self.eat_token(TokenType.LPAREN)
-            node.add_child(CommandDelegate.execute(tp.ExpressionCmd(self.tokens)).root)
+            node.add_child(Node.wrap(CommandDelegate.execute(tp.ExpressionCmd(self.tokens)).root, NodeType.EXPRESSION))
             self.eat_token(TokenType.RPAREN)
             self.eat_token(TokenType.BEGIN)
             node.add_child(CommandDelegate.execute(tp.StatementListCmd(self.tokens)).root)
