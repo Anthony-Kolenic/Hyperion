@@ -37,7 +37,13 @@ class ExpressionCmd(BaseParserCmd):
         self.in_parslets: Dict[TokenType, Callable[..., Node]] = dict({})
 
         self.register_prefix(TokenType.IDENTIFIER, IdentifierParselet)
+        
         self.register_prefix(TokenType.INT_LITERAL, LiteralParselet)
+        self.register_prefix(TokenType.STR_LITERAL, LiteralParselet)
+        self.register_prefix(TokenType.CHAR_LITERAL, LiteralParselet)
+        self.register_prefix(TokenType.DBL_LITERAL, LiteralParselet)
+        self.register_prefix(TokenType.BOOL_LITERAL, LiteralParselet)
+
         self.register_prefix(TokenType.ADD, PrefixOperatorParselet)
         self.register_prefix(TokenType.SUBTRACT, PrefixOperatorParselet)
         self.register_prefix(TokenType.NOT, PrefixOperatorParselet)
@@ -46,7 +52,18 @@ class ExpressionCmd(BaseParserCmd):
         self.register_infix(TokenType.ADD, InfixOperatorParselet, Precedence.SUM)
         self.register_infix(TokenType.SUBTRACT, InfixOperatorParselet, Precedence.SUM)
         self.register_infix(TokenType.MULTIPLY, InfixOperatorParselet, Precedence.PRODUCT)
+        self.register_infix(TokenType.DIVIDE, InfixOperatorParselet, Precedence.PRODUCT)
         self.register_infix(TokenType.MOD, InfixOperatorParselet, Precedence.PRODUCT)
+
+        self.register_infix(TokenType.AND, InfixOperatorParselet, Precedence.CONDITIONAL)
+        self.register_infix(TokenType.XOR, InfixOperatorParselet, Precedence.CONDITIONAL)
+        self.register_infix(TokenType.OR, InfixOperatorParselet, Precedence.CONDITIONAL)
+        self.register_infix(TokenType.GT, InfixOperatorParselet, Precedence.CONDITIONAL)
+        self.register_infix(TokenType.GTE, InfixOperatorParselet, Precedence.CONDITIONAL)
+        self.register_infix(TokenType.ST, InfixOperatorParselet, Precedence.CONDITIONAL)
+        self.register_infix(TokenType.STE, InfixOperatorParselet, Precedence.CONDITIONAL)
+        self.register_infix(TokenType.EQUALITY, InfixOperatorParselet, Precedence.CONDITIONAL)
+        self.register_infix(TokenType.INEQUALITY, InfixOperatorParselet, Precedence.CONDITIONAL)
 
     def get_type(self):
         return NodeType.EXPRESSION

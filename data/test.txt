@@ -1,14 +1,14 @@
 route HelloWorld(bob: bool, tina : char) : int {
 	def c: int = 3 + 6;
-	if (g) {
+	if (3 < 4) {
 		def a: string = 2;
-	} elif (b) {
+	} elif (g >= 1) {
 		def zx: string = 2;
 	} else {
-		return k + g;
+		return "4" + 3.0;
 	}
 
-	while (a + c) {
+	while (a + 1 < c) {
 		def zy: string = 2;
 	}
 	return -a + b;

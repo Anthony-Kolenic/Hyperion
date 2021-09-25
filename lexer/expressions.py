@@ -25,7 +25,7 @@ def create_dbl_literal() -> ExpressionGraph:
         v.connections['.'] = periodNode
     
     for i in range(10):
-        periodNode.connections[str(i)] = Node(False)
+        periodNode.connections[str(i)] = Node(True)
 
     for k,v in periodNode.connections.items(): # for each connection
         for a,b in periodNode.connections.items(): # connect every other connection
