@@ -1,8 +1,8 @@
+from typing import List
 from .prefix_parselet import PrefixParselet
 from lexer.token import Token
 from tree_parser.node import Node, NodeType
-from tree_parser.command.base_parser_cmd import BaseParserCmd
 
 class IdentifierParselet(PrefixParselet):
-    def parse(self, token: Token, command: BaseParserCmd):
+    def parse(self, token: Token, _: List[Token]):
         return Node(NodeType.IDENTIFIER, token)

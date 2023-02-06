@@ -12,7 +12,6 @@ class TreeOutputCmd(BaseCmd):
         self.append_to_graph(self.root, self.graph)
 
     def append_to_graph(self, node: Node, graph):
-        print(node.node_type, node.token)
         if node.token is not None:
             graph.node(str(node.id), f'{node.node_type} ({node.token.token_type}: {node.token.lexeme})')
         else:

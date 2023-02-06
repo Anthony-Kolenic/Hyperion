@@ -1,3 +1,5 @@
+from __future__ import annotations
+from typing import List
 from tree_parser.node_type import NodeType
 from lexer.token import Token
 from tree_parser.node_type import NodeType
@@ -9,10 +11,10 @@ class Node():
         self.token = token
         self.node_type = node_type
         self.id = Node.uuid
-        self.children = []
+        self.children: List[Node] = []
         Node.uuid += 1
     
-    def add_child(self, node):
+    def add_child(self, node: Node):
         self.children.append(node)
 
     def get_child_by_type(self, node_type: NodeType):

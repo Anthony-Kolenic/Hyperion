@@ -1,6 +1,6 @@
-route isFactor(i : int,val : int) : bool
+route isFactor(i : int, val : int) : bool
 {
-	ret ((i mod val) == 0);
+	return ((i mod val) == 0);
 }
 
 route PrimeTest(nothing) : int
@@ -8,47 +8,42 @@ route PrimeTest(nothing) : int
 	def inputVal : int;
 	print("Enter a number to check:\n");
 	inputVal = in();
-	if (isPrime(inputVal))
-	{
+	if (isPrime(inputVal)) {
 		def ifDefTest : int; 
 		print("Is prime!\n");
-	}
-	else
-	{
+	} else {
 		def elseDefTest : int; 
 		print("Not prime!\n");
 	}
-	ret 0;
+	return 0;
 } 
 
 route print(nothing) : int
 {
-	ret 0;
+	return 0;
 }
 
 route in(nothing) : int
 {
-	ret 0;
+	return 0;
 }
 
 route isPrime(num : int) : bool
 {
 	def i : int;
 	def z : char;
-	def m : dbl;
+	def m : double;
 	m = z + i;
 	i = 2;
 	def res : bool;
 	def name : string;
 	res = true;
-	while (i < num - 1 AND res <> false) do
-	{
+	while (i < num - 1 and res <> false) {
 		def whileDefTest : int; 
-		if (isFactor(i,num))
-		{
+		if (isFactor(i,num)) {
 			def whileIfDefTest : int; 
 			res = false;
 		}
 	}
-	ret res;
+	return res;
 }

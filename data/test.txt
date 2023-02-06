@@ -1,18 +1,20 @@
-route hello_world(bob: bool, tina : char) : string {
-	def amount: int = 1000;
-	def current_value: int = 2;
-	while (current_value <= amount) {
-		if (current_value % 2 == 0) {
-			print(current_value + " is even");
+route PrimeTest(nothing) : int
+{
+	def ifDefTest : int; 
+} 
+
+route isFactor(i : int, val : int) : bool
+{
+	return ((i mod val) == 0);
+	while (i < num) {
+		def whileDefTest : int; 
+		if (isFactor(i,num)) {
+			def whileIfDefTest : int; 
+			res = false;
+		} elif (i > num) {
+			def whileIfElseDefTest : int; 
 		} else {
-			print(current_value + " is odd");
+			def whileElseDefTest : int; 
 		}
 	}
-	say_hello("Test", 30);
-	return "Done!";
-}
-
-route say_hello(name : string, age: int) : nothing {
-	def born_in: int = 2021 - age;
-	print("Hi ", name, ", you were born in: ", born_in);
 }
