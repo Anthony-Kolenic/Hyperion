@@ -35,7 +35,7 @@ class ExpressionParser(BaseParser):
         TokenType.STR_LITERAL: LiteralParselet(Precedence.PREFIX),
         TokenType.CHAR_LITERAL: LiteralParselet(Precedence.PREFIX),
         TokenType.DBL_LITERAL: LiteralParselet(Precedence.PREFIX),
-        TokenType.BOOL_LITERAL: IdentifierParselet(Precedence.PREFIX),
+        TokenType.BOOL_LITERAL: LiteralParselet(Precedence.PREFIX),
         TokenType.ADD: PrefixOperatorParselet(Precedence.PREFIX),
         TokenType.SUBTRACT: PrefixOperatorParselet(Precedence.PREFIX),
         TokenType.NOT: PrefixOperatorParselet(Precedence.PREFIX),

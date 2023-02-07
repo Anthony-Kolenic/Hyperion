@@ -1,16 +1,21 @@
 route PrimeTest(nothing) : int
 {
 	def ifDefTest : int; 
+	return ifDefTest;
 } 
 
 route isFactor(i : int, val : int) : bool
 {
 	return ((i mod val) == 0);
+	def num : int;
 	while (i < num) {
 		def whileDefTest : int; 
-		if (isFactor(i,num)) {
+		if (isFactor(i, num)) {
 			def whileIfDefTest : int; 
-			res = false;
+			if (isFactor(i,num)) {
+				def indentTest : int; 
+				indentTest = false;
+			}
 		} elif (i > num) {
 			def whileIfElseDefTest : int; 
 		} else {

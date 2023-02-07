@@ -23,9 +23,7 @@ class ScopeCheckCmd(BaseCmd):
         self.node_map: Dict[NodeType, Callable[[ScopeCheckCmd, Dict[int, ScopeTable], Node, str]]] = {
             NodeType.METHOD: self.handle_method,
             NodeType.DEFINITION: self.handle_definition,
-            NodeType.WHILE_LOOP: self.handle_structure,
-            NodeType.CONDITIONAL: self.handle_structure,
-            NodeType.ELSE: self.handle_structure,
+            NodeType.IDENTIFIER: self.handle_identifier
         }
         self.walk_children(scope, self.root, root)
         print(scope)
@@ -34,8 +32,9 @@ class ScopeCheckCmd(BaseCmd):
     def walk_children(self, scope: Dict[int, ScopeTable], node: Node, level: str):
         for child in node.children:
             if child.node_type in self.node_map:
-                print(child.node_type)
                 self.node_map[child.node_type](scope, child, level)
+            else:
+                self.walk_children(scope, child, level)
 
     def handle_method(self, scope: Dict[int, ScopeTable], node: Node, level: str):
         identifier = node.get_child_by_type(NodeType.IDENTIFIER).token.lexeme
@@ -61,5 +60,19 @@ class ScopeCheckCmd(BaseCmd):
                 key = f"{level}_{next(ScopeCheckCmd.counter)}"
                 scope[key] = inner_scope
                 self.walk_children(scope, child, key)
+    
+    def handle_identifier(self, scope: Dict[int, ScopeTable], node: Node, level: str):
+        inscope = False
+        current_level = level
+        while not inscope and current_level != None:
+            for definition in scope[current_level].table:
+                if definition == node.token.lexeme:
+                    inscope = True
+                    break
+            if not inscope:
+                current_level = scope[current_level].parent
+        if not inscope:
+            raise ValueError(f"Undefined variable \"{node.token.lexeme}\" on line {node.token.line_num}")
+            
 
         

@@ -10,7 +10,8 @@
             "request": "launch",
             "program": "main.py",
             "console": "integratedTerminal",
-            "justMyCode": true
+            "justMyCode": true,
+            "args": ["-f", "data\\test.txt", "-e", "PrimeTest"]
         }
     ]
 }

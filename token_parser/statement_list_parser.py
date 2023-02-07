@@ -54,15 +54,6 @@ class StatementListParser(BaseParser):
             (TokenType.WHILE): WhileParser,
 
             (TokenType.IDENTIFIER, TokenType.ASSIGN): AssignmentParser
-            # Return
-            # Variable definition (def)
-            # If statement
-            # While loop
-            # Function call
         })
-        # statements[TokenType.RETURN] = ReturnCmd
-        # statements[TokenType.DEF] = DefinitionCmd
-        # statements[TokenType.IF] = IfCmd
-        # statements[TokenType.WHILE] = WhileCmd
         return statements
     
